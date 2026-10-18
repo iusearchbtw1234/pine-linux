@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+set -e
+
+if ! id pine &>/dev/null; then
+    useradd -m -G wheel,audio,video,storage,optical,input -s /bin/bash pine
+fi
+
+install -d -m 755 /etc/sudoers.d
+printf '%s\n' 'pine ALL=(ALL:ALL) NOPASSWD: ALL' \
+    > /etc/sudoers.d/pine
+chmod 440 /etc/sudoers.d/pine
+visudo -cf /etc/sudoers.d/pine

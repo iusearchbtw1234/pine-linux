@@ -1,0 +1,11 @@
+[Unit]
+Description=Pine Linux live user setup
+Before=sddm.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/pine-live-user
+RemainAfterExit=yes
+
+[Install]
+WantedBy=graphical.target
